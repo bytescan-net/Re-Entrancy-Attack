@@ -14,19 +14,12 @@ In June 2016, a hacker withdrew 3.6 million Ether from the DAO's smart contracts
 
 
 ```
-function splitDAO(
- uint _proposalID,
- address _newCurator
-) noEther onlyTokenholders returns (bool _success) {
+function splitDAO( uint _proposalID, address _newCurator) noEther onlyTokenholders returns (bool _success) {
  /*** Some checks & create new DAO (elaborate computations removed) ***/
  // Move ether and assign new Tokens
- uint fundsToBeMoved =
- (balances[msg.sender] * p.splitData[0].splitBalance) /
- p.splitData[0].totalSupply;
- if
-(p.splitData[0].newDAO.createTokenProxy.value(fundsToBeMoved)(msg.sender)
-== false)
- throw;
+ uint fundsToBeMoved = (balances[msg.sender] * p.splitData[0].splitBalance) / p.splitData[0].totalSupply;
+ if (p.splitData[0].newDAO.createTokenProxy.value(fundsToBeMoved)(msg.sender)== false)
+     throw;
  /*** More elaborate computations removed ***/
 
  // Burn DAO Tokens
@@ -62,3 +55,7 @@ _recipient.call.value(_amount)())
 The first problem here is that _recipient is a user-provided address that can point to a malicious contract. The target contract's fallback function code will be executed because there's no call data sent with the message call.
 The attacker can set up a malicious contract with a fallback function called back into splitDAO(), forming a disturbing recursive loop!
  Note that the state variables (for example, the caller's balance) are updated only *after* the reentrant call. Although tokens are withdrawn at every iteration of the loop, the attacker's balance is never set to zero!
+ 
+
+#### ByteScan Detection Strategy
+ 
