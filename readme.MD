@@ -1,7 +1,9 @@
-#### Author: Dr. Mo Ashouri
-#### ByteScan.net
+## What is Re-Entrancy Attack? and How ByteScan effectively detect it?
+
+### Author: Dr. Mo Ashouri Founder of ByteScan.Net
+### mo@bytescan.net
 #### April 2022
-### What is Re-Entrancy Attack?
+
 
 On 30 April 2016, the DAO was launched on Ethereum Block 1428757. 
 It was a thrilling concept: a decentralized autonomous organization governed by a smart contract on the Ethereum blockchain and managed based on
