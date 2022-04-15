@@ -63,3 +63,12 @@ We first identify all message calls to user-provided addresses that also forward
 
 Then if an external call to an untrusted address is caught, we analyze the control flow graph for potential state changes after the call returns. If a state change is identified, then we report the bug.
  
+ 
+ For more information about smart contract security audit, please visit https://bytescan.net
+ByteScan.Net -
+Blockchain Security Audit Team
+Author: Dr. Mo Ashouri (Founder of ByteScan)
+Contact: mo@bytescan.net
+Telegram: @mokoder
+Website: https://bytescan.net/
+Email: hello@bytescan.net
