@@ -53,3 +53,7 @@ In brief, the splitDAO() function makes a "child DAO" contract and transfers tok
  ```
 
 Note that there is a low-level instruction in the code, i.e., call statement in the payOut() function.
+
+```
+_recipient.call.value(_amount)())
+```
