@@ -1,7 +1,7 @@
 ## What is Re-Entrancy Attack? and How ByteScan effectively detect it?
 
-### Author: Dr. Mo Ashouri Founder of ByteScan.Net
-### mo@bytescan.net
+#### Author: Dr. Mo Ashouri (Founder of ByteScan.Net)
+#### mo@bytescan.net
 #### April 2022
 
 
