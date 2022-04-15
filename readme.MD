@@ -31,3 +31,23 @@ function splitDAO(
  Transfer(msg.sender, 0, balances[msg.sender]);
  withdrawRewardFor(msg.sender); // be nice, and get his rewards
  ```
+ 
+ 
+ 
+In brief, the splitDAO() function makes a "child DAO" contract and transfers tokens to the new DAO. The number of transferred tokens is computed according to the user's balance. Close the end of the function; a reward is sent to the caller via withdrawRewardFor(), which calls the payOut() function.
+ 
+ 
+ 
+ ```
+ function payOut(address _recipient, uint _amount) returns (bool) {
+      if (msg.sender != owner || msg.value > 0 || (payOwnerOnly && _recipient
+     != owner))
+      throw;
+      if (_recipient.call.value(_amount)()) {
+      PayOut(_recipient, _amount);
+      return true;
+      } else {
+      return false;
+      }
+}
+ ```
