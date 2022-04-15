@@ -58,4 +58,8 @@ The attacker can set up a malicious contract with a fallback function called bac
  
 
 #### ByteScan Detection Strategy
+
+We first identify all message calls to user-provided addresses that also forward gas. Note that Solidity's transfer() and send() functions set call gas to only 2,300, preventing re-entrancy attacks. 
+
+Then if an external call to an untrusted address is caught, we analyze the control flow graph for potential state changes after the call returns. If a state change is identified, then we report the bug.
  
