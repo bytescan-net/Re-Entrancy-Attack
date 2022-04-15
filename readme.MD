@@ -57,3 +57,6 @@ Note that there is a low-level instruction in the code, i.e., call statement in 
 ```
 _recipient.call.value(_amount)())
 ```
+The first problem here is that _recipient is a user-provided address that can point to a malicious contract. The target contract's fallback function code will be executed because there's no call data sent with the message call.
+The attacker can set up a malicious contract with a fallback function called back into splitDAO(), forming a disturbing recursive loop!
+ Note that the state variables (for example, the caller's balance) are updated only *after* the reentrant call. Although tokens are withdrawn at every iteration of the loop, the attacker's balance is never set to zero!
